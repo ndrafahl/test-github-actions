@@ -1,0 +1,17 @@
+name: Merge Lambda1
+
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    if: github.event.pull_request.merged == true
+
+    steps:
+      - name: Echo
+        uses: echo 'test'
