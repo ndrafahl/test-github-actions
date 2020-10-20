@@ -1,11 +1,11 @@
-name: Merge Lambda1
+name: Merge Lambda3
 
 on:
   pull_request:
     branches:
       - master
     types: [closed]
-    paths: 'lambda3/*'
+    paths: 'lambda1/*'
 
 jobs:
   deploy:
