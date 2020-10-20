@@ -40,7 +40,7 @@ jobs:
       #   run: |
       #     echo "1 + 5" | terraform console
 
-      - uses: hasicorp/step-terraform@v1
+      - uses: hashicorp/step-terraform@v1
       
       - name: Terraform console
         run: echo "1+5" | terraform console
