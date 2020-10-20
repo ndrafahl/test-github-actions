@@ -4,8 +4,11 @@ def main():
 
 
 def inc(x):
-    y = x + 1
-    return y
+    return x + 1
+
+
+def dec(x):
+    return x - 1
 
 
 if __name__ == "__main__":
