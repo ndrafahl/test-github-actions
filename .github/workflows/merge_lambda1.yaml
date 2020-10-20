@@ -14,4 +14,4 @@ jobs:
 
     steps:
       - name: Echo
-        uses: echo 'test'
+        run: echo 'test'
