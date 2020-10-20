@@ -12,3 +12,6 @@ def test_inc():
 
 def test_dec():
     assert dec(0) == -1
+
+def test_fail_dec():
+    assert dec(0) == 1
