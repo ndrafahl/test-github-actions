@@ -10,4 +10,6 @@ def test_get_random_int():
     x = 0
     y = 10
     z = get_random_int(x, y)
-    assert z > x and z < y
+
+    assert z > x
+    assert z < y
