@@ -8,3 +8,7 @@ from main import inc
 
 def test_inc():
     assert inc(0) == 1
+
+
+def test_dec():
+    assert dec(0) == -1
