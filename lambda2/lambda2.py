@@ -17,5 +17,9 @@ def div(x, y):
     return x / y
 
 
+def not_used_function():
+    return True
+
+
 if __name__ == "__main__":
     main()
