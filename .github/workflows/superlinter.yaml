@@ -31,4 +31,4 @@ jobs:
       
       - name: Run pytest
         run: |
-          python -m pytest --verbose
+          python -m pytest --verbose --color=yes
