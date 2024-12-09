@@ -15,7 +15,7 @@ jobs:
       - name: Set Repository Name
         id: repo_name
         run: |
-          REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> "$GITHUB_OUTPUT"
+          echo "REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> "$GITHUB_OUTPUT"
 
       - name: Echo Repo Name
         run: echo ${{ steps.repo_name.outputs.REPO_NAME }}
