@@ -17,12 +17,12 @@ jobs:
         run: |
           echo "REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> "$GITHUB_OUTPUT"
 
-      - name: Echo Repo Name
-        run: echo ${{ steps.repo_name.outputs.REPO_NAME }}
-
       - name: Verify Repository Name is Set
         if: ${{ !steps.repo_name.outputs.REPO_NAME }}
         uses: actions/github-script@v7
         with:
           script: |
             core.setFailed('The REPO_NAME value was not set in the github actions outputs.')
+
+      - name: Echo Repo Name
+        run: echo ${{ steps.repo_name.outputs.REPO_NAME }}
