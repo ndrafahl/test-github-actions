@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> "$GITHUB_OUTPUT"
 
-      - name: Verify Repository Name is Set
+      - name: Fail if Repository Name Not Set
         if: ${{ !steps.repo_name.outputs.REPO_NAME }}
         uses: actions/github-script@v7
         with:
@@ -26,3 +26,35 @@ jobs:
 
       - name: Echo Repo Name
         run: echo ${{ steps.repo_name.outputs.REPO_NAME }}
+
+      - name: Fail if S3 Bucket Not Set
+        if: ${{ !vars.S3_BUCKET }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.setFailed('The S3_BUCKET variable was not set in the Repository Settings.')
+
+      - name: Fail if Build Location Not Set
+        if: ${{ !vars.BUILD_LOCATION }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.setFailed('The BUILD_LOCATION variable was not set in the Repository Settings.')
+
+      - name: Fail AWS Access Key ID Not Set
+        if: ${{ env.S3_AWS_ACCESS_KEY_ID == '' }}
+        uses: actions/github-script@v7
+        env:
+          S3_AWS_ACCESS_KEY_ID: ${{ secrets.S3_AWS_ACCESS_KEY_ID }}
+        with:
+          script: |
+            core.setFailed('The S3_AWS_ACCESS_KEY_ID secret was not set in the Repository Settings.')
+
+      - name: Fail AWS Access Key Secret Not Set
+        if: ${{ env.S3_AWS_ACCESS_KEY_SECRET == '' }}
+        uses: actions/github-script@v7
+        env:
+          S3_AWS_ACCESS_KEY_SECRET: ${{ secrets.S3_AWS_ACCESS_KEY_SECRET }}
+        with:
+          script: |
+            core.setFailed('The S3_AWS_ACCESS_KEY_SECRET secret was not set in the Repository Settings.')
